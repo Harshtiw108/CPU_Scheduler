@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU Scheduling Simulator</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>CPU Scheduling Simulator</h1>
+        </div>
+    </header>
+    <div class="container">
+        <form id="schedulingForm">
+            <label for="algorithm">Choose Scheduling Algorithm:</label>
+            <select id="algorithm">
+                <option value="fcfs">First-Come, First-Served (FCFS)</option>
+                <option value="shortest_job_first">Shortest Job First (SJF)</option>
+                <option value="priority">Priority Scheduling</option>
+                <option value="round-robin">Round Robin (RR)</option>
+            </select>
+            <label for="processes">Enter Processes (format: pid,burst_time,priority):</label>
+            <textarea id="processes" rows="5" placeholder="e.g., 1,5,2\n2,3,1\n3,8,3"></textarea>
+            <label for="quantum" id="quantumLabel" style="display: none;">Enter Quantum Time:</label>
+            <input type="number" id="quantum" style="display: none;">
+            <button type="button" onclick="simulateScheduling()">Simulate</button>
+        </form>
+        <h2>Results</h2>
+        <div id="results"></div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
