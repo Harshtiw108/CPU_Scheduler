@@ -1,13 +1,10 @@
 document.getElementById("algorithm").addEventListener("change", function() {
     const algorithm = document.getElementById("algorithm").value;
-    const quantumLabel = document.getElementById("quantumLabel");
-    const quantumInput = document.getElementById("quantum");
+    const quantumDiv = document.getElementById("quantumDiv");
     if (algorithm === "rr") {
-        quantumLabel.style.display = "block";
-        quantumInput.style.display = "block";
+        quantumDiv.style.display = "block";
     } else {
-        quantumLabel.style.display = "none";
-        quantumInput.style.display = "none";
+        quantumDiv.style.display = "none";
     }
 });
 
@@ -44,6 +41,7 @@ async function simulateScheduling() {
 
         const result = await response.json();
         displayResults(result);
+        displayStats(result);
     } catch (error) {
         console.error('There has been a problem with your fetch operation:', error);
     }
@@ -76,6 +74,26 @@ function displayResults(results) {
     });
 
     resultsDiv.appendChild(table);
+}
+
+function displayStats(results) {
+    const statsDiv = document.getElementById("stats");
+    statsDiv.innerHTML = "";
+
+    if (!Array.isArray(results) || !results.length) {
+        statsDiv.innerHTML = "<p>No stats to display.</p>";
+        return;
+    }
+
+    const totalWaitingTime = results.reduce((sum, process) => sum + process.waitingTime, 0);
+    const totalTurnaroundTime = results.reduce((sum, process) => sum + process.turnaroundTime, 0);
+    const averageWaitingTime = totalWaitingTime / results.length;
+    const averageTurnaroundTime = totalTurnaroundTime / results.length;
+
+    statsDiv.innerHTML = `
+        <p><strong>Average Waiting Time:</strong> ${averageWaitingTime.toFixed(2)}</p>
+        <p><strong>Average Turnaround Time:</strong> ${averageTurnaroundTime.toFixed(2)}</p>
+    `;
 }
 
 document.getElementById("schedulingForm").addEventListener("submit", function(event) {
