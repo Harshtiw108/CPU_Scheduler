@@ -1,31 +1,136 @@
 body {
-    font-family: Arial, sans-serif;
-    margin: 20px;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f0f4f8;
+    color: #333;
 }
 
-h1 {
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
     text-align: center;
+    background: linear-gradient(45deg, #333, #444);
+    color: #fff;
+    padding: 20px 0;
+    border-radius: 8px;
 }
 
-form {
+header h1 {
+    margin: 0;
+    font-size: 2em;
+    animation: fadeIn 1s ease-in-out;
+}
+
+main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+.form-section, .results-section {
+    flex: 1;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin: 0 10px;
+}
+
+.form-group {
     margin-bottom: 20px;
 }
 
-#results, #stats {
-    margin-top: 20px;
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+select, textarea, input, button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background: #0056b3;
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
+    margin-bottom: 20px;
 }
 
 th, td {
     border: 1px solid #ddd;
-    padding: 8px;
-    text-align: left;
+    padding: 10px;
+    text-align: center;
 }
 
 th {
-    background-color: #f2f2f2;
+    background: #007bff;
+    color: #fff;
+}
+
+#ganttChart {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.gantt-bar {
+    padding: 10px;
+    margin: 5px;
+    background: #28a745;
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    flex: 1;
+    transition: transform 0.3s ease;
+}
+
+.gantt-bar:hover {
+    transform: scale(1.1);
+}
+
+footer {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background: linear-gradient(45deg, #333, #444);
+    color: #fff;
+    border-radius: 8px;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
 }
